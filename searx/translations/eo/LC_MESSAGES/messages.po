@@ -9,26 +9,24 @@
 # Venca24 <Vaclav.Zouzalik@seznam.cz>, 2018
 # Gergely <gergely@fsfe.org>, 2022.
 # Markus Heiser <markus.heiser@darmarit.de>, 2022.
-# return42 <markus.heiser@darmarit.de>, 2023.
+# return42 <markus.heiser@darmarit.de>, 2023, 2024.
 # RTRedreovic <RTRedreovic@users.noreply.translate.codeberg.org>, 2023.
 # Azharjan <alexander.um.edu@gmail.com>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: searx\n"
+"Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-11-11 15:25+0000\n"
-"PO-Revision-Date: 2023-11-23 06:13+0000\n"
-"Last-Translator: RTRedreovic <RTRedreovic@users.noreply.translate.codeberg."
-"org>\n"
-"Language-Team: Esperanto <https://translate.codeberg.org/projects/searxng/"
-"searxng/eo/>\n"
+"POT-Creation-Date: 2024-01-31 19:06+0000\n"
+"PO-Revision-Date: 2024-01-21 08:56+0000\n"
+"Last-Translator: return42 <markus.heiser@darmarit.de>\n"
 "Language: eo\n"
+"Language-Team: Esperanto "
+"<https://translate.codeberg.org/projects/searxng/searxng/eo/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1\n"
-"Generated-By: Babel 2.13.1\n"
+"Generated-By: Babel 2.14.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
 #: searx/searxng.msg
@@ -236,11 +234,11 @@ msgstr "servilo-API-eraro"
 msgid "Suspended"
 msgstr "Suspendigita"
 
-#: searx/webutils.py:317
+#: searx/webutils.py:315
 msgid "{minutes} minute(s) ago"
 msgstr "antaŭ {minutes} minuto(j)"
 
-#: searx/webutils.py:318
+#: searx/webutils.py:316
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "antaŭ {hours} horo(j), {minutes} minuto(j)"
 
@@ -296,7 +294,7 @@ msgstr "klakoj"
 msgid "Language"
 msgstr "Lingvo"
 
-#: searx/engines/semantic_scholar.py:81
+#: searx/engines/semantic_scholar.py:79
 msgid ""
 "{numCitations} citations from the year {firstCitationVelocityYear} to "
 "{lastCitationVelocityYear}"
@@ -500,6 +498,7 @@ msgid "Length"
 msgstr "Longo"
 
 #: searx/templates/simple/macros.html:37
+#: searx/templates/simple/result_templates/files.html:34
 #: searx/templates/simple/result_templates/images.html:18
 #: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
@@ -630,7 +629,7 @@ msgstr "Reen al supro"
 msgid "Previous page"
 msgstr "Antaŭa paĝo"
 
-#: searx/templates/simple/results.html:140
+#: searx/templates/simple/results.html:141
 msgid "Next page"
 msgstr "Sekva paĝo"
 
@@ -716,6 +715,7 @@ msgstr "Procento"
 msgid "Parameter"
 msgstr "Parametro"
 
+#: searx/templates/simple/result_templates/files.html:36
 #: searx/templates/simple/stats.html:119
 msgid "Filename"
 msgstr "Dosiernomo"
@@ -761,10 +761,12 @@ msgid "Search URL"
 msgstr "Serĉi URL"
 
 #: searx/templates/simple/elements/search_url.html:4
+#: searx/templates/simple/preferences/cookies.html:54
 msgid "Copied"
 msgstr "Kopiita"
 
 #: searx/templates/simple/elements/search_url.html:4
+#: searx/templates/simple/preferences/cookies.html:54
 msgid "Copy"
 msgstr "Kopii"
 
@@ -844,29 +846,41 @@ msgstr "Informoj!"
 msgid "currently, there are no cookies defined."
 msgstr "nun ne estas ajnaj kuketoj difinitaj."
 
-#: searx/templates/simple/messages/no_results.html:3
+#: searx/templates/simple/messages/no_results.html:6
 msgid "Sorry!"
 msgstr "Pardonu!"
 
-#: searx/templates/simple/messages/no_results.html:4
+#: searx/templates/simple/messages/no_results.html:12
 msgid "No results were found. You can try to:"
 msgstr "Neniuj rezultoj estis trovitaj. Vi povas provi:"
 
-#: searx/templates/simple/messages/no_results.html:6
+#: searx/templates/simple/messages/no_results.html:14
+msgid "There are no more results. You can try to:"
+msgstr "Estas nenio plu rezultoj. Vi povas provi:"
+
+#: searx/templates/simple/messages/no_results.html:19
 msgid "Refresh the page."
 msgstr "Refreŝigi la paĝon."
 
-#: searx/templates/simple/messages/no_results.html:7
+#: searx/templates/simple/messages/no_results.html:20
 msgid "Search for another query or select another category (above)."
 msgstr "Serĉu alian demandon aŭ elektu alian kategorion (supre)."
 
-#: searx/templates/simple/messages/no_results.html:8
+#: searx/templates/simple/messages/no_results.html:21
 msgid "Change the search engine used in the preferences:"
 msgstr "Ŝanĝi la serĉilon uzatan en la preferoj:"
 
-#: searx/templates/simple/messages/no_results.html:9
+#: searx/templates/simple/messages/no_results.html:22
 msgid "Switch to another instance:"
 msgstr "Ŝanĝi al alia instanco:"
+
+#: searx/templates/simple/messages/no_results.html:24
+msgid "Search for another query or select another category."
+msgstr "Ŝercu por alia demandon aŭ elektu alia kategorio."
+
+#: searx/templates/simple/messages/no_results.html:25
+msgid "Go back to the previous page using the previous page button."
+msgstr "Reiru al la antaŭa paĝon uzata la antaŭa paĝo butono."
 
 #: searx/templates/simple/preferences/answerers.html:4
 #: searx/templates/simple/preferences/engines.html:17
@@ -949,13 +963,25 @@ msgstr ""
 msgid "URL to restore your preferences in another browser"
 msgstr "URL por restarigi viajn preferojn en alia TTT-legilo"
 
-#: searx/templates/simple/preferences/cookies.html:44
+#: searx/templates/simple/preferences/cookies.html:43
 msgid ""
 "Specifying custom settings in the preferences URL can be used to sync "
 "preferences across devices."
 msgstr ""
 "Specifante kutimajn agordojn en la URL de preferoj povas esti uzata por "
 "sinkronigi preferojn tra aparatoj."
+
+#: searx/templates/simple/preferences/cookies.html:46
+msgid "Copy preferences hash"
+msgstr ""
+
+#: searx/templates/simple/preferences/cookies.html:57
+msgid "Insert copied preferences hash (without URL) to restore"
+msgstr ""
+
+#: searx/templates/simple/preferences/cookies.html:59
+msgid "Preferences hash"
+msgstr ""
 
 #: searx/templates/simple/preferences/doi_resolver.html:2
 msgid "Open Access DOI resolver"
@@ -1074,8 +1100,8 @@ msgid ""
 "When enabled, the result page's title contains your query. Your browser "
 "can record this title"
 msgstr ""
-"Kiam ĝi estas ebligita, la titolo de la rezultpaĝo enhavas vian demandon. "
-"Via TTT-legilo povas registri ĉi tiun titolon"
+"Kiam ĝi estas ebligita, la titolo de la rezultpaĝo enhavas vian demandon."
+" Via TTT-legilo povas registri ĉi tiun titolon"
 
 #: searx/templates/simple/preferences/results_on_new_tab.html:2
 msgid "Results on new tabs"
@@ -1138,10 +1164,13 @@ msgid "repo"
 msgstr "Deponejo"
 
 #: searx/templates/simple/result_templates/default.html:6
+#: searx/templates/simple/result_templates/files.html:8
+#: searx/templates/simple/result_templates/files.html:11
 msgid "show media"
 msgstr "montri aŭdvidaĵojn"
 
 #: searx/templates/simple/result_templates/default.html:6
+#: searx/templates/simple/result_templates/files.html:8
 msgid "hide media"
 msgstr "kaŝi aŭdvidaĵojn"
 
@@ -1149,6 +1178,45 @@ msgstr "kaŝi aŭdvidaĵojn"
 #: searx/templates/simple/result_templates/videos.html:14
 msgid "This site did not provide any description."
 msgstr "Ĉi tiu retejo ne disponigis ajnan priskribon."
+
+#: searx/templates/simple/result_templates/files.html:38
+#: searx/templates/simple/result_templates/torrent.html:11
+msgid "Filesize"
+msgstr "Dosiergrandeco"
+
+#: searx/templates/simple/result_templates/files.html:39
+#: searx/templates/simple/result_templates/torrent.html:12
+msgid "Bytes"
+msgstr "Bitokoj"
+
+#: searx/templates/simple/result_templates/files.html:40
+#: searx/templates/simple/result_templates/torrent.html:13
+msgid "kiB"
+msgstr "kiB"
+
+#: searx/templates/simple/result_templates/files.html:41
+#: searx/templates/simple/result_templates/torrent.html:14
+msgid "MiB"
+msgstr "MiB"
+
+#: searx/templates/simple/result_templates/files.html:42
+#: searx/templates/simple/result_templates/torrent.html:15
+msgid "GiB"
+msgstr "GiB"
+
+#: searx/templates/simple/result_templates/files.html:43
+#: searx/templates/simple/result_templates/torrent.html:16
+msgid "TiB"
+msgstr "TiB"
+
+#: searx/templates/simple/result_templates/files.html:47
+msgid "Date"
+msgstr ""
+
+#: searx/templates/simple/result_templates/files.html:49
+#: searx/templates/simple/result_templates/paper.html:24
+msgid "Type"
+msgstr "Tipo"
 
 #: searx/templates/simple/result_templates/images.html:19
 msgid "Format"
@@ -1190,10 +1258,6 @@ msgstr "Redaktoro"
 msgid "Publisher"
 msgstr "Eldonejo"
 
-#: searx/templates/simple/result_templates/paper.html:24
-msgid "Type"
-msgstr "Tipo"
-
 #: searx/templates/simple/result_templates/paper.html:25
 msgid "Tags"
 msgstr "Etikedoj"
@@ -1233,30 +1297,6 @@ msgstr "Fonto"
 #: searx/templates/simple/result_templates/torrent.html:9
 msgid "Leecher"
 msgstr "Ricevanto"
-
-#: searx/templates/simple/result_templates/torrent.html:11
-msgid "Filesize"
-msgstr "Dosiergrandeco"
-
-#: searx/templates/simple/result_templates/torrent.html:12
-msgid "Bytes"
-msgstr "Bitokoj"
-
-#: searx/templates/simple/result_templates/torrent.html:13
-msgid "kiB"
-msgstr "kiB"
-
-#: searx/templates/simple/result_templates/torrent.html:14
-msgid "MiB"
-msgstr "MiB"
-
-#: searx/templates/simple/result_templates/torrent.html:15
-msgid "GiB"
-msgstr "GiB"
-
-#: searx/templates/simple/result_templates/torrent.html:16
-msgid "TiB"
-msgstr "TiB"
 
 #: searx/templates/simple/result_templates/torrent.html:20
 msgid "Number of Files"
@@ -1673,3 +1713,4 @@ msgstr "kaŝi videojn"
 #~ "ni ne trovis rezultojn. Bonvole uzu "
 #~ "alian serĉfrazon aŭ serĉu en pliaj "
 #~ "kategorioj."
+

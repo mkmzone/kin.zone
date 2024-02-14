@@ -11,18 +11,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-11-11 15:25+0000\n"
+"POT-Creation-Date: 2024-01-31 19:06+0000\n"
 "PO-Revision-Date: 2023-11-23 06:13+0000\n"
 "Last-Translator: return42 <markus.heiser@darmarit.de>\n"
-"Language-Team: Korean <https://translate.codeberg.org/projects/searxng/"
-"searxng/ko/>\n"
 "Language: ko\n"
+"Language-Team: Korean "
+"<https://translate.codeberg.org/projects/searxng/searxng/ko/>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.1\n"
-"Generated-By: Babel 2.13.1\n"
+"Generated-By: Babel 2.14.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
 #: searx/searxng.msg
@@ -230,11 +229,11 @@ msgstr "서버 API 오류"
 msgid "Suspended"
 msgstr "중단됨"
 
-#: searx/webutils.py:317
+#: searx/webutils.py:315
 msgid "{minutes} minute(s) ago"
 msgstr "{minutes}분 전"
 
-#: searx/webutils.py:318
+#: searx/webutils.py:316
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "{hours}시간 {minutes}분 전"
 
@@ -290,7 +289,7 @@ msgstr "clicks"
 msgid "Language"
 msgstr "언어"
 
-#: searx/engines/semantic_scholar.py:81
+#: searx/engines/semantic_scholar.py:79
 msgid ""
 "{numCitations} citations from the year {firstCitationVelocityYear} to "
 "{lastCitationVelocityYear}"
@@ -482,6 +481,7 @@ msgid "Length"
 msgstr "길이"
 
 #: searx/templates/simple/macros.html:37
+#: searx/templates/simple/result_templates/files.html:34
 #: searx/templates/simple/result_templates/images.html:18
 #: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
@@ -612,7 +612,7 @@ msgstr "위로 돌아가기"
 msgid "Previous page"
 msgstr "이전 페이지"
 
-#: searx/templates/simple/results.html:140
+#: searx/templates/simple/results.html:141
 msgid "Next page"
 msgstr "다음 페이지"
 
@@ -698,6 +698,7 @@ msgstr "백분율"
 msgid "Parameter"
 msgstr "매개변수"
 
+#: searx/templates/simple/result_templates/files.html:36
 #: searx/templates/simple/stats.html:119
 msgid "Filename"
 msgstr "파일명"
@@ -743,10 +744,12 @@ msgid "Search URL"
 msgstr "검색 URL"
 
 #: searx/templates/simple/elements/search_url.html:4
+#: searx/templates/simple/preferences/cookies.html:54
 msgid "Copied"
 msgstr "복사됨"
 
 #: searx/templates/simple/elements/search_url.html:4
+#: searx/templates/simple/preferences/cookies.html:54
 msgid "Copy"
 msgstr "복사하기"
 
@@ -826,29 +829,41 @@ msgstr "알림!"
 msgid "currently, there are no cookies defined."
 msgstr "현재 정의된 쿠기가 없습니다."
 
-#: searx/templates/simple/messages/no_results.html:3
+#: searx/templates/simple/messages/no_results.html:6
 msgid "Sorry!"
 msgstr "죄송합니다!"
 
-#: searx/templates/simple/messages/no_results.html:4
+#: searx/templates/simple/messages/no_results.html:12
 msgid "No results were found. You can try to:"
 msgstr "검색 결과 없음. 다음을 시도해 보세요:"
 
-#: searx/templates/simple/messages/no_results.html:6
+#: searx/templates/simple/messages/no_results.html:14
+msgid "There are no more results. You can try to:"
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:19
 msgid "Refresh the page."
 msgstr "페이지를 새로고침 하세요."
 
-#: searx/templates/simple/messages/no_results.html:7
+#: searx/templates/simple/messages/no_results.html:20
 msgid "Search for another query or select another category (above)."
 msgstr "다른 검색어를 사용하거나 위에서 다른 카테고리를 선택해 주세요."
 
-#: searx/templates/simple/messages/no_results.html:8
+#: searx/templates/simple/messages/no_results.html:21
 msgid "Change the search engine used in the preferences:"
 msgstr "설정에서 사용할 검색엔진 바꾸기:"
 
-#: searx/templates/simple/messages/no_results.html:9
+#: searx/templates/simple/messages/no_results.html:22
 msgid "Switch to another instance:"
 msgstr "다른 인스터스를 사용해 주세요:"
+
+#: searx/templates/simple/messages/no_results.html:24
+msgid "Search for another query or select another category."
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:25
+msgid "Go back to the previous page using the previous page button."
+msgstr ""
 
 #: searx/templates/simple/preferences/answerers.html:4
 #: searx/templates/simple/preferences/engines.html:17
@@ -927,11 +942,23 @@ msgstr "검색 URL에 사용자 설정을 명시하면 결과 사이트에 데�
 msgid "URL to restore your preferences in another browser"
 msgstr "다른 브라우저에서 설정을 복구하기 위한 URL"
 
-#: searx/templates/simple/preferences/cookies.html:44
+#: searx/templates/simple/preferences/cookies.html:43
 msgid ""
 "Specifying custom settings in the preferences URL can be used to sync "
 "preferences across devices."
 msgstr "특정 설정이 들어간 URL은 장치 간에 설정을 동기화 하는데 사용할 수 있습니다."
+
+#: searx/templates/simple/preferences/cookies.html:46
+msgid "Copy preferences hash"
+msgstr ""
+
+#: searx/templates/simple/preferences/cookies.html:57
+msgid "Insert copied preferences hash (without URL) to restore"
+msgstr ""
+
+#: searx/templates/simple/preferences/cookies.html:59
+msgid "Preferences hash"
+msgstr ""
 
 #: searx/templates/simple/preferences/doi_resolver.html:2
 msgid "Open Access DOI resolver"
@@ -1104,10 +1131,13 @@ msgid "repo"
 msgstr "리포지토리"
 
 #: searx/templates/simple/result_templates/default.html:6
+#: searx/templates/simple/result_templates/files.html:8
+#: searx/templates/simple/result_templates/files.html:11
 msgid "show media"
 msgstr "미디어 표시"
 
 #: searx/templates/simple/result_templates/default.html:6
+#: searx/templates/simple/result_templates/files.html:8
 msgid "hide media"
 msgstr "미디어 숨기기"
 
@@ -1115,6 +1145,45 @@ msgstr "미디어 숨기기"
 #: searx/templates/simple/result_templates/videos.html:14
 msgid "This site did not provide any description."
 msgstr "사이트에서 소개를 제공하지 않았습니다."
+
+#: searx/templates/simple/result_templates/files.html:38
+#: searx/templates/simple/result_templates/torrent.html:11
+msgid "Filesize"
+msgstr "파일 크기"
+
+#: searx/templates/simple/result_templates/files.html:39
+#: searx/templates/simple/result_templates/torrent.html:12
+msgid "Bytes"
+msgstr "바이트"
+
+#: searx/templates/simple/result_templates/files.html:40
+#: searx/templates/simple/result_templates/torrent.html:13
+msgid "kiB"
+msgstr "kiB"
+
+#: searx/templates/simple/result_templates/files.html:41
+#: searx/templates/simple/result_templates/torrent.html:14
+msgid "MiB"
+msgstr "MiB"
+
+#: searx/templates/simple/result_templates/files.html:42
+#: searx/templates/simple/result_templates/torrent.html:15
+msgid "GiB"
+msgstr "GiB"
+
+#: searx/templates/simple/result_templates/files.html:43
+#: searx/templates/simple/result_templates/torrent.html:16
+msgid "TiB"
+msgstr "TiB"
+
+#: searx/templates/simple/result_templates/files.html:47
+msgid "Date"
+msgstr ""
+
+#: searx/templates/simple/result_templates/files.html:49
+#: searx/templates/simple/result_templates/paper.html:24
+msgid "Type"
+msgstr "분류"
 
 #: searx/templates/simple/result_templates/images.html:19
 msgid "Format"
@@ -1156,10 +1225,6 @@ msgstr "편집자"
 msgid "Publisher"
 msgstr "발행자"
 
-#: searx/templates/simple/result_templates/paper.html:24
-msgid "Type"
-msgstr "분류"
-
 #: searx/templates/simple/result_templates/paper.html:25
 msgid "Tags"
 msgstr "태그"
@@ -1199,30 +1264,6 @@ msgstr "시드"
 #: searx/templates/simple/result_templates/torrent.html:9
 msgid "Leecher"
 msgstr "리치"
-
-#: searx/templates/simple/result_templates/torrent.html:11
-msgid "Filesize"
-msgstr "파일 크기"
-
-#: searx/templates/simple/result_templates/torrent.html:12
-msgid "Bytes"
-msgstr "바이트"
-
-#: searx/templates/simple/result_templates/torrent.html:13
-msgid "kiB"
-msgstr "kiB"
-
-#: searx/templates/simple/result_templates/torrent.html:14
-msgid "MiB"
-msgstr "MiB"
-
-#: searx/templates/simple/result_templates/torrent.html:15
-msgid "GiB"
-msgstr "GiB"
-
-#: searx/templates/simple/result_templates/torrent.html:16
-msgid "TiB"
-msgstr "TiB"
 
 #: searx/templates/simple/result_templates/torrent.html:20
 msgid "Number of Files"
@@ -1503,3 +1544,4 @@ msgstr "비디오 숨기기"
 #~ "use another query or search in "
 #~ "more categories."
 #~ msgstr "검색결과를 찾을 수 없습니다. 다른 검색어로 검색하거나 검색 범주를 추가해주세요."
+

@@ -19,12 +19,18 @@ brand:
   public_instances: https://searx.space
   wiki_url: https://github.com/searxng/searxng/wiki
   issue_url: https://github.com/searxng/searxng/issues
+  # custom:
+  #   maintainer: "Jon Doe"
+  #   # Custom entries in the footer: [title]: [link]
+  #   links:
+  #     Uptime: https://uptime.searxng.org/history/darmarit-org
+  #     About: "https://searxng.org"
 
 search:
   # Filter results. 0: None, 1: Moderate, 2: Strict
   safe_search: 0
   # Existing autocomplete backends: "dbpedia", "duckduckgo", "google", "yandex", "mwmbl",
-  # "seznam", "startpage", "swisscows", "qwant", "wikipedia" - leave blank to turn it off
+  # "seznam", "startpage", "stract", "swisscows", "qwant", "wikipedia" - leave blank to turn it off
   # by default.
   autocomplete: "google"
   # minimun characters to type before autocompleter starts
@@ -66,9 +72,7 @@ search:
     - html
 
 server:
-  # If you change port, bind_address or base_url don't forget to rebuild
-  # instance's environment (make buildenv). Is overwritten by ${SEARXNG_PORT}
-  # and ${SEARXNG_BIND_ADDRESS}
+  # Is overwritten by ${SEARXNG_PORT} and ${SEARXNG_BIND_ADDRESS}
   port: 8888
   bind_address: "127.0.0.1"
   # public URL of the instance, to ensure correct inbound links. Is overwritten
@@ -90,7 +94,6 @@ server:
   method: "GET"
   default_http_headers:
     X-Content-Type-Options: nosniff
-    X-XSS-Protection: 1; mode=block
     X-Download-Options: noopen
     X-Robots-Tag: noindex, nofollow
     Referrer-Policy: no-referrer
@@ -809,6 +812,12 @@ engines:
       require_api_key: false
       results: JSON
 
+  - name: goodreads
+    engine: goodreads
+    shortcut: good
+    timeout: 4.0
+    disabled: true
+
   - name: google
     engine: google
     shortcut: go
@@ -1003,8 +1012,9 @@ engines:
 
   - name: library genesis
     engine: xpath
-    search_url: https://libgen.fun/search.php?req={query}
-    url_xpath: //a[contains(@href,"get.php?md5")]/@href
+    # search_url: https://libgen.is/search.php?req={query}
+    search_url: https://libgen.rs/search.php?req={query}
+    url_xpath: //a[contains(@href,"book/index.php?md5")]/@href
     title_xpath: //a[contains(@href,"book/")]/text()[1]
     content_xpath: //td/a[1][contains(@href,"=author")]/text()
     categories: files
@@ -1034,7 +1044,7 @@ engines:
     engine: lingva
     shortcut: lv
     # set lingva instance in url, by default it will use the official instance
-    # url: https://lingva.thedaviddelta.com/
+    # url: https://lingva.thedaviddelta.com
 
   - name: lobste.rs
     engine: xpath
@@ -1349,10 +1359,12 @@ engines:
     search_type: search
     categories: [general, web]
     shortcut: ps
+    timeout: 4.0
     disabled: true
 
   - name: presearch images
     engine: presearch
+    network: presearch
     search_type: images
     categories: [images, web]
     timeout: 4.0
@@ -1361,6 +1373,7 @@ engines:
 
   - name: presearch videos
     engine: presearch
+    network: presearch
     search_type: videos
     categories: [general, web]
     timeout: 4.0
@@ -1369,6 +1382,7 @@ engines:
 
   - name: presearch news
     engine: presearch
+    network: presearch
     search_type: news
     categories: [news, web]
     timeout: 4.0
@@ -2079,6 +2093,11 @@ engines:
     timeout: 5.0
     disabled: true
 
+  - name: stract
+    engine: stract
+    shortcut: str
+    disabled: true
+
   - name: svgrepo
     engine: svgrepo
     shortcut: svg
@@ -2153,6 +2172,16 @@ engines:
     shortcut: brnews
     categories: news
     brave_category: news
+
+  # - name: brave.goggles
+  #   engine: brave
+  #   network: brave
+  #   shortcut: brgog
+  #   time_range_support: true
+  #   paging: true
+  #   categories: [general, web]
+  #   brave_category: goggles
+  #   Goggles: # required! This should be a URL ending in .goggle
 
   - name: lib.rs
     shortcut: lrs

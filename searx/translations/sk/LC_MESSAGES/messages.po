@@ -10,21 +10,20 @@
 # return42 <markus.heiser@darmarit.de>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: searx\n"
+"Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-11-11 15:25+0000\n"
+"POT-Creation-Date: 2024-01-31 19:06+0000\n"
 "PO-Revision-Date: 2023-11-17 07:07+0000\n"
 "Last-Translator: return42 <markus.heiser@darmarit.de>\n"
-"Language-Team: Slovak <https://translate.codeberg.org/projects/searxng/"
-"searxng/sk/>\n"
 "Language: sk\n"
+"Language-Team: Slovak "
+"<https://translate.codeberg.org/projects/searxng/searxng/sk/>\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 "
+"&& n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
-">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Weblate 5.1\n"
-"Generated-By: Babel 2.13.1\n"
+"Generated-By: Babel 2.14.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
 #: searx/searxng.msg
@@ -232,11 +231,11 @@ msgstr "API chyba servera"
 msgid "Suspended"
 msgstr "Pozastavené"
 
-#: searx/webutils.py:317
+#: searx/webutils.py:315
 msgid "{minutes} minute(s) ago"
 msgstr "pred {minutes} min."
 
-#: searx/webutils.py:318
+#: searx/webutils.py:316
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "pred {hours} hod., {minutes} min."
 
@@ -292,7 +291,7 @@ msgstr "kliknutia"
 msgid "Language"
 msgstr "Jazyk"
 
-#: searx/engines/semantic_scholar.py:81
+#: searx/engines/semantic_scholar.py:79
 msgid ""
 "{numCitations} citations from the year {firstCitationVelocityYear} to "
 "{lastCitationVelocityYear}"
@@ -491,6 +490,7 @@ msgid "Length"
 msgstr "Dĺžka"
 
 #: searx/templates/simple/macros.html:37
+#: searx/templates/simple/result_templates/files.html:34
 #: searx/templates/simple/result_templates/images.html:18
 #: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
@@ -623,7 +623,7 @@ msgstr "Späť na začiatok"
 msgid "Previous page"
 msgstr "Predošlá strana"
 
-#: searx/templates/simple/results.html:140
+#: searx/templates/simple/results.html:141
 msgid "Next page"
 msgstr "Ďalšia strana"
 
@@ -709,6 +709,7 @@ msgstr "Úroveň"
 msgid "Parameter"
 msgstr "Parameter"
 
+#: searx/templates/simple/result_templates/files.html:36
 #: searx/templates/simple/stats.html:119
 msgid "Filename"
 msgstr "Názov súboru"
@@ -754,10 +755,12 @@ msgid "Search URL"
 msgstr "Adresa URL vyhľadávania"
 
 #: searx/templates/simple/elements/search_url.html:4
+#: searx/templates/simple/preferences/cookies.html:54
 msgid "Copied"
 msgstr "Skopírované"
 
 #: searx/templates/simple/elements/search_url.html:4
+#: searx/templates/simple/preferences/cookies.html:54
 msgid "Copy"
 msgstr "Kopírovať"
 
@@ -837,29 +840,41 @@ msgstr "Informácia!"
 msgid "currently, there are no cookies defined."
 msgstr "momentálne nie su definované žiadne cookies."
 
-#: searx/templates/simple/messages/no_results.html:3
+#: searx/templates/simple/messages/no_results.html:6
 msgid "Sorry!"
 msgstr "Je nám ľúto!"
 
-#: searx/templates/simple/messages/no_results.html:4
+#: searx/templates/simple/messages/no_results.html:12
 msgid "No results were found. You can try to:"
 msgstr "Nenašli sa žiadne výsledky. Môžete skúsiť:"
 
-#: searx/templates/simple/messages/no_results.html:6
+#: searx/templates/simple/messages/no_results.html:14
+msgid "There are no more results. You can try to:"
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:19
 msgid "Refresh the page."
 msgstr "Obnovte stránku."
 
-#: searx/templates/simple/messages/no_results.html:7
+#: searx/templates/simple/messages/no_results.html:20
 msgid "Search for another query or select another category (above)."
 msgstr ""
 
-#: searx/templates/simple/messages/no_results.html:8
+#: searx/templates/simple/messages/no_results.html:21
 msgid "Change the search engine used in the preferences:"
 msgstr "Zmeňte použitý vyhľadávač v preferenciách:"
 
-#: searx/templates/simple/messages/no_results.html:9
+#: searx/templates/simple/messages/no_results.html:22
 msgid "Switch to another instance:"
 msgstr "Prepnúť na inú inštanciu:"
+
+#: searx/templates/simple/messages/no_results.html:24
+msgid "Search for another query or select another category."
+msgstr ""
+
+#: searx/templates/simple/messages/no_results.html:25
+msgid "Go back to the previous page using the previous page button."
+msgstr ""
 
 #: searx/templates/simple/preferences/answerers.html:4
 #: searx/templates/simple/preferences/engines.html:17
@@ -943,13 +958,25 @@ msgstr ""
 msgid "URL to restore your preferences in another browser"
 msgstr "Adresa (URL) pre obnovu nastavení v inom prehliadači"
 
-#: searx/templates/simple/preferences/cookies.html:44
+#: searx/templates/simple/preferences/cookies.html:43
 msgid ""
 "Specifying custom settings in the preferences URL can be used to sync "
 "preferences across devices."
 msgstr ""
 "Zadaním osobitých nastavení v adrese (URL) nastavení je možné "
 "synchronizovať nastavenia do iných zariadení."
+
+#: searx/templates/simple/preferences/cookies.html:46
+msgid "Copy preferences hash"
+msgstr ""
+
+#: searx/templates/simple/preferences/cookies.html:57
+msgid "Insert copied preferences hash (without URL) to restore"
+msgstr ""
+
+#: searx/templates/simple/preferences/cookies.html:59
+msgid "Preferences hash"
+msgstr ""
 
 #: searx/templates/simple/preferences/doi_resolver.html:2
 msgid "Open Access DOI resolver"
@@ -1132,10 +1159,13 @@ msgid "repo"
 msgstr "repozitár"
 
 #: searx/templates/simple/result_templates/default.html:6
+#: searx/templates/simple/result_templates/files.html:8
+#: searx/templates/simple/result_templates/files.html:11
 msgid "show media"
 msgstr "ukázať médiá"
 
 #: searx/templates/simple/result_templates/default.html:6
+#: searx/templates/simple/result_templates/files.html:8
 msgid "hide media"
 msgstr "skryť médiá"
 
@@ -1143,6 +1173,45 @@ msgstr "skryť médiá"
 #: searx/templates/simple/result_templates/videos.html:14
 msgid "This site did not provide any description."
 msgstr "Táto stránka neposkytuje žiaden popis."
+
+#: searx/templates/simple/result_templates/files.html:38
+#: searx/templates/simple/result_templates/torrent.html:11
+msgid "Filesize"
+msgstr "Veľkosť súboru"
+
+#: searx/templates/simple/result_templates/files.html:39
+#: searx/templates/simple/result_templates/torrent.html:12
+msgid "Bytes"
+msgstr "bajtov"
+
+#: searx/templates/simple/result_templates/files.html:40
+#: searx/templates/simple/result_templates/torrent.html:13
+msgid "kiB"
+msgstr "kB"
+
+#: searx/templates/simple/result_templates/files.html:41
+#: searx/templates/simple/result_templates/torrent.html:14
+msgid "MiB"
+msgstr "MB"
+
+#: searx/templates/simple/result_templates/files.html:42
+#: searx/templates/simple/result_templates/torrent.html:15
+msgid "GiB"
+msgstr "GB"
+
+#: searx/templates/simple/result_templates/files.html:43
+#: searx/templates/simple/result_templates/torrent.html:16
+msgid "TiB"
+msgstr "TB"
+
+#: searx/templates/simple/result_templates/files.html:47
+msgid "Date"
+msgstr ""
+
+#: searx/templates/simple/result_templates/files.html:49
+#: searx/templates/simple/result_templates/paper.html:24
+msgid "Type"
+msgstr "Typ"
 
 #: searx/templates/simple/result_templates/images.html:19
 msgid "Format"
@@ -1184,10 +1253,6 @@ msgstr "Editor"
 msgid "Publisher"
 msgstr "Vydavateľ"
 
-#: searx/templates/simple/result_templates/paper.html:24
-msgid "Type"
-msgstr "Typ"
-
 #: searx/templates/simple/result_templates/paper.html:25
 msgid "Tags"
 msgstr "Značky"
@@ -1227,30 +1292,6 @@ msgstr "Odosielateľ"
 #: searx/templates/simple/result_templates/torrent.html:9
 msgid "Leecher"
 msgstr "Príjemca"
-
-#: searx/templates/simple/result_templates/torrent.html:11
-msgid "Filesize"
-msgstr "Veľkosť súboru"
-
-#: searx/templates/simple/result_templates/torrent.html:12
-msgid "Bytes"
-msgstr "bajtov"
-
-#: searx/templates/simple/result_templates/torrent.html:13
-msgid "kiB"
-msgstr "kB"
-
-#: searx/templates/simple/result_templates/torrent.html:14
-msgid "MiB"
-msgstr "MB"
-
-#: searx/templates/simple/result_templates/torrent.html:15
-msgid "GiB"
-msgstr "GB"
-
-#: searx/templates/simple/result_templates/torrent.html:16
-msgid "TiB"
-msgstr "TB"
 
 #: searx/templates/simple/result_templates/torrent.html:20
 msgid "Number of Files"
@@ -1677,3 +1718,4 @@ msgstr "skryť video"
 #~ "nepodarilo sa nájsť žiadne výsledky. "
 #~ "Skúste použiť iné zadanie alebo "
 #~ "vyhľadávajte vo viacerých kategóriach."
+

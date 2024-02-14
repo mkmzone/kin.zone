@@ -2,10 +2,10 @@
 
 ----
 
-.. figure:: https://raw.githubusercontent.com/searxng/searxng/master/src/brand/searxng.svg
-   :target: https://docs.searxng.org/
-   :alt: SearXNG
-   :width: 100%
+.. figure:: searx/static/themes/simple/img/kin.zone_logo.png
+   :target: https://mkm.zone
+   :alt: Kin.Zone
+   :width: 50%
    :align: center
 
 ----
@@ -128,3 +128,21 @@ You can contribute from your browser using `GitHub Codespaces`_:
 .. _GitHub Codespaces: https://docs.github.com/en/codespaces/overview
 .. _120 hours per month: https://github.com/settings/billing
 .. _list of existing Codespaces: https://github.com/codespaces
+
+
+Donations
+=========
+
+
+Kin.Zone:
+
+https://ko-fi.com/mkmzone
+
+https://coindrop.to/mkmzone
+
+
+SearXNG:
+
+https://docs.searxng.org/donate.html
+
+Thank you :)

@@ -15,7 +15,7 @@
 {% if results and results|map(attribute='template')|unique|list|count == 1 %}
   {% set only_template = 'only_template_' + results[0]['template']|default('default')|replace('.html', '') %}
 {% else %}
-  {% set only_template = '' %}
+  {% set only_template = 'only_template_default' %}
 {% endif %}
 
 <div id="results" class="{{ only_template }}">

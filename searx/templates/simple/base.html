@@ -2,9 +2,9 @@
 <html class="no-js theme-{{ preferences.get_value('simple_style') or 'auto' }} center-aligment-{{ preferences.get_value('center_alignment') and 'yes' or 'no' }}" lang="{{ locale_rfc5646 }}" {% if rtl %} dir="rtl"{% endif %}>
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="SearXNG — a privacy-respecting, open metasearch engine">
-  <meta name="keywords" content="SearXNG, search, search engine, metasearch, meta search">
-  <meta name="generator" content="searxng/{{ searx_version }}">
+  <meta name="description" content="— a privacy-respecting, open metasearch engine">
+  <meta name="keywords" content="Kin.Zone, search, search engine, metasearch, meta search">
+  <meta name="generator" content="Kin.Zone/{{ searx_version }}">
   <meta name="referrer" content="no-referrer">
   <meta name="robots" content="noarchive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +20,7 @@
   {% if get_setting('server.limiter') or get_setting('server.public_instance') %}
   <link rel="stylesheet" href="{{ url_for('client_token', token=link_token) }}" type="text/css" />
   {% endif %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" type="text/css" media="screen" />
   {% block styles %}{% endblock %}
   <!--[if gte IE 9]>-->
   <script src="{{ url_for('static', filename='js/searxng.head.min.js') }}" client_settings="{{ client_settings }}"></script>
@@ -27,8 +28,8 @@
   {% block head %}
   <link title="{{ instance_name }}" type="application/opensearchdescription+xml" rel="search" href="{{ opensearch_url }}"/>
   {% endblock %}
-  <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" sizes="any">
-  <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
+  <link rel="icon" href="{{ url_for('static', filename='img/kin.zone_logo.png') }}" sizes="any">
+  <link rel="icon" href="{{ url_for('static', filename='img/kin.zone_logo.png') }}" type="image/svg+xml">
 </head>
 <body class="{{ endpoint }}_endpoint" >
   <main id="main_{{  self._TemplateReference__context.name|replace("simple/", "")|replace(".html", "") }}" class="{{body_class}}">
@@ -46,15 +47,188 @@
     <nav id="links_on_top">
       {%- from 'simple/icons.html' import icon_big -%}
       {%- block linkto_about -%}
-        <a href="{{ url_for('info', pagename='about') }}" class="link_on_top_about">{{ icon_big('information-circle-outline') }}<span>{{ _('About') }}</span></a>
+        <a href="{{ url_for('info', pagename='about') }}" class="link_on_top_about"><span>{{ _('About') }}</span></a>
       {%- endblock -%}
       {%- block linkto_donate -%}
         {%- if donation_url -%}
-        <a href="{{ donation_url }}" class="link_on_top_donate">{{ icon_big('heart-outline') }}<span>{{ _('Donate') }}</span></a>
+        <a href="{{ url_for('info', pagename='support') }}" class="link_on_top_donate"><span>{{ _('Support') }}</span></a>
         {%- endif -%}
       {%- endblock -%}
       {%- block linkto_preferences -%}
-        <a href="{{ url_for('preferences') }}" class="link_on_top_preferences">{{ icon_big('menu-outline') }}<span>{{ _('Preferences') }}</span></a>
+        <a href="{{ url_for('preferences') }}" class="link_on_top_preferences">{{ icon_big('settings-outline') }}</a>
+      {%- endblock -%}
+      {%- block linkto_nav -%}
+        <div class="nav_dropdown" id="nav_dropdown" onclick="showNavDropdownMenu()">
+          <span class="link_on_top_nav">{{ icon_big('ellipsis-vertical-outline-2') }}</span>
+          <div class="nav_dropdown_menu" id="nav_dropdown_menu">
+
+            <h3 style="font-size: 1.1rem;font-weight: 700;text-align:center;color:white;">Nav</h3>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="{{ url_for('info', pagename='about') }}" style="display:block;margin:auto;text-align:center;">
+
+                <span style="background-color: rgb(90, 96, 109);padding: 7px 2px 5px 5px;border-radius:5px;color:white;display: inline !important;">
+                  {{ icon_big('information-circle-outline-white') }}
+                </span>
+                <span style="display:block;margin-top: 5px;">
+                  About
+                </span>
+
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="{{ url_for('info', pagename='support') }}" style="display:block;margin:auto;text-align:center;">
+
+                <span style="background-color: rgb(90, 96, 109);padding: 7px 2px 5px 5px;border-radius:5px;display: inline !important;">
+                  {{ icon_big('heart-outline-white') }}
+                </span>
+                <span style="display:block;margin-top: 5px;">
+                  Support
+                </span>
+
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="{{ url_for('preferences') }}" style="display:block;margin:auto;text-align:center;">
+
+                <span style="background-color: rgb(90, 96, 109);padding: 7px 2px 5px 5px;border-radius:5px;display: inline !important;">
+                  {{ icon_big('settings-outline-white') }}
+                </span>
+                <span style="display:block;margin-top: 5px;">
+                  Settings
+                </span>
+
+              </a>
+            </div>
+
+            <hr style="border-width:0.1px;width:80%;margin-top:20px;color:grey;">
+
+            <h3 style="font-size: 1.1rem;font-weight: 700;text-align:center;color:white;">Apps</h3>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="https://www.lingo.kin.zone" target="_blank" 
+              style="display:block;margin:auto;text-align:center">
+                  <img class="" src="{{ url_for('static', filename='img/lingo.kin.zone_logo.png') }}" alt="..."
+                  style="width:3.5rem;border-radius:10px;" 
+                  />
+                  <span class="" style="display:block;margin-top:-2px;">
+                      Lingo
+                  </span>
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="https://www.ai.kin.zone" target="_blank" 
+              style="display:block;margin:auto;text-align:center">
+                  <img class="" src="{{ url_for('static', filename='img/ai.kin.zone_logo.png') }}" alt="..." 
+                  style="width:3.5rem;border-radius:10px;" 
+                  />
+                  <span class="" style="display:block;margin-top:-2px;">
+                      AI
+                  </span>
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="https://www.crypto.kin.zone" target="_blank" 
+              style="display:block;margin:auto;text-align:center">
+                  <img class="" src="{{ url_for('static', filename='img/crypto.kin.zone_logo.png') }}" alt="..." 
+                  style="width:3.5rem;border-radius:10px;" 
+                  />
+                  <span class="" style="display:block;margin-top:-2px;">
+                      Crypto
+                  </span>
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="https://www.shop.kin.zone" target="_blank" 
+              style="display:block;margin:auto;text-align:center">
+                  <img class="" src="{{ url_for('static', filename='img/shop.kin.zone_logo.png') }}" alt="..." 
+                  style="width:3.5rem;border-radius:10px;" 
+                  />
+                  <span class="" style="display:block;margin-top:-2px;">
+                      Shop
+                  </span>
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="https://www.aifw.kin.zone" target="_blank" 
+              style="display:block;margin:auto;text-align:center">
+                  <img class="" src="{{ url_for('static', filename='img/aifw.kin.zone_logo.png') }}" alt="..." 
+                  style="width:3.5rem;border-radius:10px;" 
+                  />
+                  <span class="" style="display:block;margin-top:-2px;">
+                      AIFW
+                  </span>
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="https://www.blockchain.kin.zone" target="_blank" 
+              style="display:block;margin:auto;text-align:center">
+                  <img class="" src="{{ url_for('static', filename='img/blockchain.kin.zone_logo.png') }}" alt="..." 
+                  style="width:3.5rem;border-radius:10px;" 
+                  />
+                  <span class="" style="display:block;margin-top:-2px;">
+                      Blockchain
+                  </span>
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="https://www.cloud.kin.zone" target="_blank" 
+              style="display:block;margin:auto;text-align:center">
+                  <img class="" src="{{ url_for('static', filename='img/cloud.kin.zone_logo.png') }}" alt="..." 
+                  style="width:3.5rem;border-radius:10px;" 
+                  />
+                  <span class="" style="display:block;margin-top:-2px;">
+                      Cloud
+                  </span>
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="https://www.os.kin.zone" target="_blank" 
+              style="display:block;margin:auto;text-align:center">
+                  <img class="" src="{{ url_for('static', filename='img/os.kin.zone_logo.png') }}" alt="..." 
+                  style="width:3.5rem;border-radius:10px;" 
+                  />
+                  <span class="" style="display:block;margin-top:-2px;">
+                      OS
+                  </span>
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="https://www.vm.kin.zone" target="_blank" 
+              style="display:block;margin:auto;text-align:center">
+                  <img class="" src="{{ url_for('static', filename='img/vm.kin.zone_logo.png') }}" alt="..." 
+                  style="width:3.5rem;border-radius:10px;" 
+                  />
+                  <span class="" style="display:block;margin-top:-2px;">
+                      VM
+                  </span>
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="https://www.boot.kin.zone" target="_blank" 
+              style="display:block;margin:auto;text-align:center">
+                  <img class="" src="{{ url_for('static', filename='img/boot.kin.zone_logo.png') }}" alt="..." 
+                  style="width:3.5rem;border-radius:10px;" 
+                  />
+                  <span class="" style="display:block;margin-top:-2px;">
+                      Boot
+                  </span>
+              </a>
+            </div>
+
+          </div>
+        </div>
       {%- endblock -%}
     </nav>
     {% block header %}
@@ -64,26 +238,37 @@
   </main>
   <footer>
     <p>
-    {{ _('Powered by') }} <a href="{{ url_for('info', pagename='about') }}">searxng</a> - {{ searx_version }} — {{ _('a privacy-respecting, open metasearch engine') }}<br/>
-        <a href="{{ searx_git_url }}">{{ _('Source code') }}</a>
-        | <a href="{{ get_setting('brand.issue_url') }}">{{ _('Issue tracker') }}</a>
-        {% if enable_metrics %}| <a href="{{ url_for('stats') }}">{{ _('Engine stats') }}</a>{% endif %}
-        {% if get_setting('brand.public_instances') %}
-        | <a href="{{ get_setting('brand.public_instances') }}">{{ _('Public instances') }}</a>
-        {% endif %}
-        {% if get_setting('general.privacypolicy_url') %}
-        | <a href="{{ get_setting('general.privacypolicy_url') }}">{{ _('Privacy policy') }}</a>
-        {% endif %}
-        {% if get_setting('general.contact_url') %}
-        | <a href="{{ get_setting('general.contact_url') }}">{{ _('Contact instance maintainer') }}</a>
-        {% endif %}
-        {% for title, link in get_setting('brand.custom.links').items() %}
-        | <a href="{{ link }}">{{ _(title) }}</a>
-        {% endfor %}
+
+      Kin.Zone is a privacy-respecting open source metasearch engine based on 
+      <a href="https://github.com/searxng/searxng/" target="_blank">SearXNG.</a>
+      It's built, deployed, and operated by 
+      <a href="https://mkm.zone/" target="_blank">Moïse KM</a> and the open source community
+      <br/> 
+
+      <a href="{{ url_for('info', pagename='about') }}">{{ _('About') }} </a>
+      {%- if donation_url -%}
+      | <a href="{{ url_for('info', pagename='support') }}">{{ _('Support') }} </a> 
+      {%- endif -%} 
+      | <a href="{{ url_for('preferences') }}">{{ _('Settings') }}</a>
+      {% if get_setting('general.privacypolicy_url') %}
+      | <a href="{{ get_setting('general.privacypolicy_url') }}">{{ _('Privacy policy') }}</a>
+      {% endif %}
+      | <a href="{{ url_for('info', pagename='privacy-policy') }}">{{ _('Privacy policy') }}</a>
+      | <a href="https://github.com/mkmzone/kin.zone" target="_blank">{{ _('Source code') }}</a>
+      | <a href="{{ get_setting('brand.issue_url') }}" target="_blank">{{ _('Issue tracker') }}</a>
+      {% if enable_metrics %}| <a href="{{ url_for('stats') }}">{{ _('Engine stats') }}</a>{% endif %}
+      {% if get_setting('brand.public_instances') %}
+      | <a href="{{ get_setting('brand.public_instances') }}" target="_blank">{{ _('Similar instances') }}</a>
+      {% endif %}
+      {% if get_setting('general.contact_url') %}
+      | <a href="{{ get_setting('general.contact_url') }}" target="_blank">{{ _('Contact instance maintainer') }}</a>
+      {% endif %}
+
     </p>
   </footer>
   <!--[if gte IE 9]>-->
   <script src="{{ url_for('static', filename='js/searxng.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
   <!--<![endif]-->
 </body>
 </html>

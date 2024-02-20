@@ -1,23 +1,35 @@
 let searchForm = document.getElementById("search");
 let searchFormInput = document.getElementById("q");
 let clearSearch = document.getElementById('clear_search');
+let sendSearch = document.getElementById('send_search');
+let searchView = document.getElementById('search_view');
+let searchBox = document.getElementById('search_box_area');
 
-/*
-searchForm.addEventListener("click", function(e){   
-    if(e.target.matches(".autocomplete ul")){
-        document.forms["search"].submit();
-    }
-});
-*/
+if(searchFormInput){
+    searchFormInput.addEventListener("focusout", function(e){   
+        if(!searchFormInput.value && searchFormInput.getAttribute("value")){
+            searchFormInput.value = searchFormInput.getAttribute("value");
+            clearSearch.classList.remove("empty");    
+        }
+    });
+}
 
-searchFormInput.addEventListener("focusout", function(e){   
-    if(!searchFormInput.value && searchFormInput.getAttribute("value")){
-        searchFormInput.value = searchFormInput.getAttribute("value");
-        clearSearch.classList.remove("empty");    
-    }
-});
+if(clearSearch){   
+    clearSearch.addEventListener("mousedown", function(e){
+        e.preventDefault();
+        searchFormInput.value = "";
+        clearSearch.classList.remove("empty");
+    });   
+}
 
-function showNavDropdownMenu() {
+if(sendSearch){
+    sendSearch.addEventListener("mousedown", function(e){
+        e.preventDefault();
+        searchForm.submit();
+    });
+}
+
+document.getElementById("nav_dropdown").onclick = function (event) {
     document.getElementById("nav_dropdown_menu").classList.toggle("show");
 }
 
@@ -28,8 +40,32 @@ window.onclick = function(event) {
             navDropdownMenu.classList.remove('show');
         }
     }
+    //event.preventDefault();
+    //alert(event.target.tagName);
+    //console.log(`${event.type}, ${event.target}, ${event.target.classList}, ${event.originalTarget}, `);
+    //alert(event.currentTarget.tagName);
 } 
 
-//documen
 
-//let onAutoCompleteClick = function(e){if(e.target.tagName ==="li"){document.forms["search"].submit();}};
+function setLogs(element) {
+    element.addEventListener("focus", () => {
+        console.log("focus", element.tagName);
+    });
+    element.addEventListener("blur", () => {
+        console.log("blur", element.tagName);
+    });
+    element.addEventListener("mousedown", () => {
+        console.log("mousedown", element.tagName);
+    });
+    element.addEventListener("mouseup", () => {
+        console.log("mouseup", element.tagName);
+    });
+    element.addEventListener("click", () => {
+        console.log("click", element.tagName);
+    });
+
+    for (const child of element.children)
+        setLogs(child);
+}
+
+//setLogs(document.body);

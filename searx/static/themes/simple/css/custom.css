@@ -49,7 +49,7 @@ html {
     right: 0.1em;
     top: 35px;
     width:fit-content;
-    max-height: 530px;
+    max-height: 550px;
     overflow-y: scroll;
     box-shadow: 0 1px 5px rgba(18, 21, 25, 0.32);
     border-radius: 10px;
@@ -117,6 +117,9 @@ select {
     #main_results #categories {
         margin-left: 1.2rem;
     }
+    #main_results #categories_container {
+        padding-right: 1.4rem;
+    }
     #main_results .category svg {
         display: inline;
         margin-bottom: 0rem !important;
@@ -130,6 +133,12 @@ select {
 .result-images span.source {
     font-size: .79rem;
     opacity: 90%;
+}
+
+@media screen and (min-width: 50em) {
+    #results.image-detail-open article.result-images[data-vim-selected] .detail {
+        top: 8.9rem;
+    }
 }
 
 #results.image-detail-open article.result-images[data-vim-selected] .detail .result-images-labels h4, 
@@ -198,7 +207,7 @@ small {
 }
 
 #main_index #search_view {
-    padding: .5rem .5rem 0 0.9rem;
+    padding: 0 .5rem 0 0.9rem;
 }
 
 .autocomplete ul {
@@ -319,8 +328,14 @@ footer, #search_header {
         border-radius: none;
         box-shadow: none;
     }
+    #search_view:focus-within .search_box *, .autocomplete {
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
     #search_view:focus-within {
         padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 0 !important;
     }
 }
 
@@ -779,6 +794,7 @@ footer, #search_header {
     }
 
 }
+
 @media screen and (max-width: 50em) {
 
     #search_header {

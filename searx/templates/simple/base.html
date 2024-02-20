@@ -28,8 +28,8 @@
   {% block head %}
   <link title="{{ instance_name }}" type="application/opensearchdescription+xml" rel="search" href="{{ opensearch_url }}"/>
   {% endblock %}
-  <link rel="icon" href="{{ url_for('static', filename='img/kin.zone_logo.png') }}" sizes="any">
-  <link rel="icon" href="{{ url_for('static', filename='img/kin.zone_logo.png') }}" type="image/svg+xml">
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" sizes="any">
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
 </head>
 <body class="{{ endpoint }}_endpoint" >
   <main id="main_{{  self._TemplateReference__context.name|replace("simple/", "")|replace(".html", "") }}" class="{{body_class}}">
@@ -46,23 +46,34 @@
 
     <nav id="links_on_top">
       {%- from 'simple/icons.html' import icon_big -%}
+      {%- block linkto_home -%}
+        <a href="{{ url_for('index') }}" class="link_on_top_about"><span>{{ _('Home') }}</span></a>
+      {%- endblock -%}
       {%- block linkto_about -%}
         <a href="{{ url_for('info', pagename='about') }}" class="link_on_top_about"><span>{{ _('About') }}</span></a>
-      {%- endblock -%}
-      {%- block linkto_donate -%}
-        {%- if donation_url -%}
-        <a href="{{ url_for('info', pagename='support') }}" class="link_on_top_donate"><span>{{ _('Support') }}</span></a>
-        {%- endif -%}
       {%- endblock -%}
       {%- block linkto_preferences -%}
         <a href="{{ url_for('preferences') }}" class="link_on_top_preferences">{{ icon_big('settings-outline') }}</a>
       {%- endblock -%}
       {%- block linkto_nav -%}
-        <div class="nav_dropdown" id="nav_dropdown" onclick="showNavDropdownMenu()">
+        <div class="nav_dropdown" id="nav_dropdown">
           <span class="link_on_top_nav">{{ icon_big('ellipsis-vertical-outline-2') }}</span>
           <div class="nav_dropdown_menu" id="nav_dropdown_menu">
 
             <h3 style="font-size: 1.1rem;font-weight: 700;text-align:center;color:white;">Nav</h3>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="{{ url_for('index') }}" style="display:block;margin:auto;text-align:center;">
+
+                <span style="background-color: rgb(90, 96, 109);padding: 7px 2px 5px 5px;border-radius:5px;color:white;display: inline !important;">
+                  {{ icon_big('home-outline') }}
+                </span>
+                <span style="display:block;margin-top: 5px;">
+                  Home
+                </span>
+
+              </a>
+            </div>
 
             <div class="" style="margin-top:10px;margin-bottom:10px;">
               <a href="{{ url_for('info', pagename='about') }}" style="display:block;margin:auto;text-align:center;">
@@ -78,19 +89,6 @@
             </div>
 
             <div class="" style="margin-top:10px;margin-bottom:10px;">
-              <a href="{{ url_for('info', pagename='support') }}" style="display:block;margin:auto;text-align:center;">
-
-                <span style="background-color: rgb(90, 96, 109);padding: 7px 2px 5px 5px;border-radius:5px;display: inline !important;">
-                  {{ icon_big('heart-outline-white') }}
-                </span>
-                <span style="display:block;margin-top: 5px;">
-                  Support
-                </span>
-
-              </a>
-            </div>
-
-            <div class="" style="margin-top:10px;margin-bottom:10px;">
               <a href="{{ url_for('preferences') }}" style="display:block;margin:auto;text-align:center;">
 
                 <span style="background-color: rgb(90, 96, 109);padding: 7px 2px 5px 5px;border-radius:5px;display: inline !important;">
@@ -98,6 +96,19 @@
                 </span>
                 <span style="display:block;margin-top: 5px;">
                   Settings
+                </span>
+
+              </a>
+            </div>
+
+            <div class="" style="margin-top:10px;margin-bottom:10px;">
+              <a href="{{ url_for('info', pagename='support') }}" style="display:block;margin:auto;text-align:center;">
+
+                <span style="background-color: rgb(90, 96, 109);padding: 7px 2px 5px 5px;border-radius:5px;display: inline !important;">
+                  {{ icon_big('heart-outline-white') }}
+                </span>
+                <span style="display:block;margin-top: 5px;">
+                  Support
                 </span>
 
               </a>

@@ -20,21 +20,20 @@
 # mittwerk <w0o0y8jt@duck.com>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: searx\n"
+"Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-01-31 19:06+0000\n"
+"POT-Creation-Date: 2024-02-25 15:26+0000\n"
 "PO-Revision-Date: 2024-02-01 06:37+0000\n"
 "Last-Translator: return42 <markus.heiser@darmarit.de>\n"
-"Language-Team: Russian <https://translate.codeberg.org/projects/searxng/"
-"searxng/ru/>\n"
 "Language: ru\n"
+"Language-Team: Russian "
+"<https://translate.codeberg.org/projects/searxng/searxng/ru/>\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) "
+"|| (n%100>=11 && n%100<=14)? 2 : 3);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || ("
-"n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Weblate 5.3.1\n"
 "Generated-By: Babel 2.14.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
@@ -162,12 +161,22 @@ msgstr "светлая"
 msgid "dark"
 msgstr "тёмная"
 
+#. BRAND_CUSTOM_LINKS['UPTIME']
+#: searx/searxng.msg
+msgid "Uptime"
+msgstr ""
+
+#. BRAND_CUSTOM_LINKS['ABOUT']
+#: searx/searxng.msg searx/templates/simple/base.html:49
+msgid "About"
+msgstr "О программе"
+
 #: searx/webapp.py:332
 msgid "No item found"
 msgstr "ничего не найдено"
 
-#: searx/engines/qwant.py:280
-#: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:334
+#: searx/engines/qwant.py:282
+#: searx/templates/simple/result_templates/images.html:23 searx/webapp.py:334
 msgid "Source"
 msgstr "источник"
 
@@ -175,15 +184,15 @@ msgstr "источник"
 msgid "Error loading the next page"
 msgstr "не удалось загрузить следующую страницу"
 
-#: searx/webapp.py:493 searx/webapp.py:889
+#: searx/webapp.py:483 searx/webapp.py:879
 msgid "Invalid settings, please edit your preferences"
 msgstr "неправильные параметры, пожалуйста измените ваши настройки"
 
-#: searx/webapp.py:509
+#: searx/webapp.py:499
 msgid "Invalid settings"
 msgstr "Неверные настройки"
 
-#: searx/webapp.py:586 searx/webapp.py:668
+#: searx/webapp.py:576 searx/webapp.py:658
 msgid "search error"
 msgstr "ошибка поиска"
 
@@ -279,7 +288,7 @@ msgstr "{title} (УСТАРЕЛО)"
 msgid "This entry has been superseded by"
 msgstr "Эта запись была заменена на"
 
-#: searx/engines/qwant.py:282
+#: searx/engines/qwant.py:284
 msgid "Channel"
 msgstr "Канал"
 
@@ -449,10 +458,6 @@ msgstr "Перейти к %(search_page)s."
 msgid "search page"
 msgstr "страница поиска"
 
-#: searx/templates/simple/base.html:49
-msgid "About"
-msgstr "О программе"
-
 #: searx/templates/simple/base.html:53
 msgid "Donate"
 msgstr "Пожертвовать"
@@ -471,6 +476,7 @@ msgid "a privacy-respecting, open metasearch engine"
 msgstr "открытая метапоисковая система, соблюдающая конфиденциальность"
 
 #: searx/templates/simple/base.html:68
+#: searx/templates/simple/result_templates/packages.html:59
 msgid "Source code"
 msgstr "Исходный код"
 
@@ -504,7 +510,7 @@ msgstr "Длительность"
 
 #: searx/templates/simple/macros.html:37
 #: searx/templates/simple/result_templates/files.html:34
-#: searx/templates/simple/result_templates/images.html:18
+#: searx/templates/simple/result_templates/images.html:19
 #: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
 msgstr "Автор"
@@ -901,6 +907,7 @@ msgid "Keywords"
 msgstr "Ключевые слова"
 
 #: searx/templates/simple/preferences/answerers.html:6
+#: searx/templates/simple/result_templates/packages.html:7
 msgid "Name"
 msgstr "Название"
 
@@ -984,8 +991,7 @@ msgstr "Скопировать хэш настроек"
 
 #: searx/templates/simple/preferences/cookies.html:57
 msgid "Insert copied preferences hash (without URL) to restore"
-msgstr ""
-"Вставить скопированный хэш настроек (без URL-адреса) для их восстановления"
+msgstr "Вставить скопированный хэш настроек (без URL-адреса) для их восстановления"
 
 #: searx/templates/simple/preferences/cookies.html:59
 msgid "Preferences hash"
@@ -1193,6 +1199,7 @@ msgid "This site did not provide any description."
 msgstr "Этот сайт не предоставил описания."
 
 #: searx/templates/simple/result_templates/files.html:38
+#: searx/templates/simple/result_templates/images.html:22
 #: searx/templates/simple/result_templates/torrent.html:11
 msgid "Filesize"
 msgstr "Размер файла"
@@ -1231,15 +1238,19 @@ msgstr "Дата"
 msgid "Type"
 msgstr "Тип"
 
-#: searx/templates/simple/result_templates/images.html:19
+#: searx/templates/simple/result_templates/images.html:20
+msgid "Resolution"
+msgstr ""
+
+#: searx/templates/simple/result_templates/images.html:21
 msgid "Format"
 msgstr "Формат"
 
-#: searx/templates/simple/result_templates/images.html:21
+#: searx/templates/simple/result_templates/images.html:24
 msgid "Engine"
 msgstr "Движок"
 
-#: searx/templates/simple/result_templates/images.html:22
+#: searx/templates/simple/result_templates/images.html:25
 msgid "View source"
 msgstr "Перейти к источнику"
 
@@ -1254,6 +1265,39 @@ msgstr "показать карту"
 #: searx/templates/simple/result_templates/map.html:43
 msgid "hide map"
 msgstr "скрыть карту"
+
+#: searx/templates/simple/result_templates/packages.html:12
+msgid "Version"
+msgstr ""
+
+#: searx/templates/simple/result_templates/packages.html:18
+msgid "Maintainer"
+msgstr ""
+
+#: searx/templates/simple/result_templates/packages.html:24
+msgid "Updated at"
+msgstr ""
+
+#: searx/templates/simple/result_templates/packages.html:30
+#: searx/templates/simple/result_templates/paper.html:25
+msgid "Tags"
+msgstr "Теги"
+
+#: searx/templates/simple/result_templates/packages.html:36
+msgid "Popularity"
+msgstr ""
+
+#: searx/templates/simple/result_templates/packages.html:42
+msgid "License"
+msgstr ""
+
+#: searx/templates/simple/result_templates/packages.html:52
+msgid "Project"
+msgstr ""
+
+#: searx/templates/simple/result_templates/packages.html:55
+msgid "Project homepage"
+msgstr ""
 
 #: searx/templates/simple/result_templates/paper.html:5
 msgid "Published date"
@@ -1270,10 +1314,6 @@ msgstr "Редактор"
 #: searx/templates/simple/result_templates/paper.html:23
 msgid "Publisher"
 msgstr "Издатель"
-
-#: searx/templates/simple/result_templates/paper.html:25
-msgid "Tags"
-msgstr "Теги"
 
 #: searx/templates/simple/result_templates/paper.html:26
 msgid "DOI"
@@ -1746,3 +1786,4 @@ msgstr "скрыть видео"
 #~ "мы не нашли никаких результатов. "
 #~ "Попробуйте изменить запрос или поищите в"
 #~ " других категориях."
+

@@ -314,9 +314,9 @@ engines:
   #   engine: annas_archive
   #   shortcut: aaa
   #   # https://docs.searxng.org/dev/engines/online/annas_archive.html
-  #   aa_content: 'journal_article' # book_any .. magazine, standards_document
+  #   aa_content: 'magazine' # book_fiction, book_unknown, book_nonfiction, book_comic
   #   aa_ext: 'pdf'  # pdf, epub, ..
-  #   aa_sort: 'newest'  # newest, oldest, largest, smallest
+  #   aa_sort: oldest'  # newest, oldest, largest, smallest
 
   - name: apk mirror
     engine: apkmirror
@@ -438,31 +438,18 @@ engines:
     shortcut: bt
     disabled: true
 
-  - name: ccc-tv
-    engine: xpath
-    paging: false
-    search_url: https://media.ccc.de/search/?q={query}
-    url_xpath: //div[@class="caption"]/h3/a/@href
-    title_xpath: //div[@class="caption"]/h3/a/text()
-    content_xpath: //div[@class="caption"]/h4/@title
-    categories: videos
-    disabled: true
-    shortcut: c3tv
-    about:
-      website: https://media.ccc.de/
-      wikidata_id: Q80729951
-      official_api_documentation: https://github.com/voc/voctoweb
-      use_official_api: false
-      require_api_key: false
-      results: HTML
-      # We don't set language: de here because media.ccc.de is not just
-      # for a German audience. It contains many English videos and many
-      # German videos have English subtitles.
-
   - name: openverse
     engine: openverse
     categories: images
     shortcut: opv
+
+  - name: media.ccc.de
+    engine: ccc_media
+    shortcut: c3tv
+    # We don't set language: de here because media.ccc.de is not just
+    # for a German audience. It contains many English videos and many
+    # German videos have English subtitles.
+    disabled: true
 
   - name: chefkoch
     engine: chefkoch
@@ -940,8 +927,7 @@ engines:
 
   - name: hoogle
     engine: xpath
-    paging: true
-    search_url: https://hoogle.haskell.org/?hoogle={query}&start={pageno}
+    search_url: https://hoogle.haskell.org/?hoogle={query}
     results_xpath: '//div[@class="result"]'
     title_xpath: './/div[@class="ans"]//a'
     url_xpath: './/div[@class="ans"]//a/@href'
@@ -1061,6 +1047,16 @@ engines:
     shortcut: loc
     categories: images
 
+  - name: libretranslate
+    engine: libretranslate
+    # https://github.com/LibreTranslate/LibreTranslate?tab=readme-ov-file#mirrors
+    base_url:
+      - https://translate.terraprint.co
+      - https://trans.zillyhuhn.com
+    # api_key: abc123
+    shortcut: lt
+    disabled: true
+
   - name: lingva
     engine: lingva
     shortcut: lv
@@ -1069,7 +1065,7 @@ engines:
 
   - name: lobste.rs
     engine: xpath
-    search_url: https://lobste.rs/search?utf8=%E2%9C%93&q={query}&what=stories&order=relevance
+    search_url: https://lobste.rs/search?q={query}&what=stories&order=relevance
     results_xpath: //li[contains(@class, "story")]
     url_xpath: .//a[@class="u-url"]/@href
     title_xpath: .//a[@class="u-url"]
@@ -1081,25 +1077,6 @@ engines:
     about:
       website: https://lobste.rs/
       wikidata_id: Q60762874
-      official_api_documentation:
-      use_official_api: false
-      require_api_key: false
-      results: HTML
-
-  - name: azlyrics
-    shortcut: lyrics
-    engine: xpath
-    timeout: 4.0
-    disabled: true
-    categories: [music, lyrics]
-    paging: true
-    search_url: https://search.azlyrics.com/search.php?q={query}&w=lyrics&p={pageno}
-    url_xpath: //td[@class="text-left visitedlyr"]/a/@href
-    title_xpath: //span/b/text()
-    content_xpath: //td[@class="text-left visitedlyr"]/a/small
-    about:
-      website: https://azlyrics.com
-      wikidata_id: Q66372542
       official_api_documentation:
       use_official_api: false
       require_api_key: false
@@ -1192,26 +1169,10 @@ engines:
     disabled: true
 
   - name: npm
-    engine: json_engine
-    paging: true
-    first_page_num: 0
-    search_url: https://api.npms.io/v2/search?q={query}&size=25&from={pageno}
-    results_query: results
-    url_query: package/links/npm
-    title_query: package/name
-    content_query: package/description
-    page_size: 25
-    categories: [it, packages]
-    disabled: true
-    timeout: 5.0
+    engine: npm
     shortcut: npm
-    about:
-      website: https://npms.io/
-      wikidata_id: Q7067518
-      official_api_documentation: https://api-docs.npms.io/
-      use_official_api: false
-      require_api_key: false
-      results: JSON
+    timeout: 5.0
+    disabled: true
 
   - name: nyaa
     engine: nyaa
@@ -1233,6 +1194,14 @@ engines:
       use_official_api: true
       require_api_key: false
       results: JSON
+
+  # read https://docs.searxng.org/dev/engines/online/mullvad_leta.html
+  # - name: mullvadleta
+  #   engine: mullvad_leta
+  #   use_cache: true  # Only 100 non-cache searches per day, suggested only for private instances
+  #   search_url: https://leta.mullvad.net
+  #   categories: [general, web]
+  #   shortcut: ml
 
   - name: odysee
     engine: odysee
@@ -1278,6 +1247,11 @@ engines:
       use_official_api: false
       require_api_key: false
       results: JSON
+
+  - name: openmeteo
+    engine: open_meteo
+    shortcut: om
+    disabled: true
 
   # - name: opensemanticsearch
   #   engine: opensemantic
@@ -1378,10 +1352,10 @@ engines:
     disabled: true
     inactive: true
     pixiv_image_proxies:
-      - pximg.example.org
+      - https://pximg.example.org
       # A proxy is required to load the images. Hosting an image proxy server
       # for Pixiv:
-      #    --> https://codeberg.org/VnPower/PixivFE/wiki/Hosting-an-image-proxy-server-for-Pixiv
+      #    --> https://pixivfe.pages.dev/hosting-image-proxy-server/
       # Proxies from public instances.  Ask the public instances owners if they
       # agree to receive traffic from SearXNG!
       #    --> https://codeberg.org/VnPower/PixivFE#instances
@@ -1591,11 +1565,6 @@ engines:
   - name: searchcode code
     engine: searchcode_code
     shortcut: scc
-    disabled: true
-
-  - name: framalibre
-    engine: framalibre
-    shortcut: frl
     disabled: true
 
   # - name: searx
@@ -2017,7 +1986,7 @@ engines:
     search_url: https://search.naver.com/search.naver?where=webkr&sm=osp_hty&ie=UTF-8&query={query}&start={pageno}
     url_xpath: //a[@class="link_tit"]/@href
     title_xpath: //a[@class="link_tit"]
-    content_xpath: //a[@class="total_dsc"]/div
+    content_xpath: //div[@class="total_dsc_wrap"]/a
     first_page_num: 1
     page_size: 10
     disabled: true
@@ -2255,20 +2224,8 @@ engines:
 
   - name: lib.rs
     shortcut: lrs
-    engine: xpath
-    search_url: https://lib.rs/search?q={query}
-    results_xpath: /html/body/main/div/ol/li/a
-    url_xpath: ./@href
-    title_xpath: ./div[@class="h"]/h4
-    content_xpath: ./div[@class="h"]/p
-    categories: [it, packages]
+    engine: lib_rs
     disabled: true
-    about:
-      website: https://lib.rs
-      wikidata_id: Q113486010
-      use_official_api: false
-      require_api_key: false
-      results: HTML
 
   - name: sourcehut
     shortcut: srht
@@ -2315,21 +2272,9 @@ engines:
     shortcut: bt4g
 
   - name: pkg.go.dev
-    engine: xpath
+    engine: pkg_go_dev
     shortcut: pgo
-    search_url: https://pkg.go.dev/search?limit=100&m=package&q={query}
-    results_xpath: /html/body/main/div[contains(@class,"SearchResults")]/div[not(@class)]/div[@class="SearchSnippet"]
-    url_xpath: ./div[@class="SearchSnippet-headerContainer"]/h2/a/@href
-    title_xpath: ./div[@class="SearchSnippet-headerContainer"]/h2/a
-    content_xpath: ./p[@class="SearchSnippet-synopsis"]
-    categories: [packages, it]
-    timeout: 3.0
     disabled: true
-    about:
-      website: https://pkg.go.dev/
-      use_official_api: false
-      require_api_key: false
-      results: HTML
 
 # Doku engine lets you access to any Doku wiki instance:
 # A public one or a privete/corporate one.

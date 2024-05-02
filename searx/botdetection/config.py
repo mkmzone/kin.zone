@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Configuration class :py:class:`Config` with deep-update, schema validation
 and deprecated names.
 
@@ -211,7 +210,6 @@ def value(name: str, data_dict: dict):
 def validate(
     schema_dict: typing.Dict, data_dict: typing.Dict, deprecated: typing.Dict[str, str]
 ) -> typing.Tuple[bool, list]:
-
     """Deep validation of dictionary in ``data_dict`` against dictionary in
     ``schema_dict``.  Argument deprecated is a dictionary that maps deprecated
     configuration names to a messages::

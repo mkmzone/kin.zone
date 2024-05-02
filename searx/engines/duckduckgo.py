@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """
 DuckDuckGo Lite
 ~~~~~~~~~~~~~~~
@@ -125,7 +124,8 @@ def get_vqd(query):
             value = value[: value.index('"')]
             break
     logger.debug("new vqd value: '%s'", value)
-    cache_vqd(query, value)
+    if value is not None:
+        cache_vqd(query, value)
     return value
 
 
@@ -222,13 +222,10 @@ ddg_lang_map = {
 }
 
 
-def request(query, params):
-
-    # request needs a vqd argument
-    vqd = get_vqd(query)
-
+def quote_ddg_bangs(query):
     # quote ddg bangs
     query_parts = []
+
     # for val in re.split(r'(\s+)', query):
     for val in re.split(r'(\s+)', query):
         if not val.strip():
@@ -236,7 +233,15 @@ def request(query, params):
         if val.startswith('!') and external_bang.get_node(external_bang.EXTERNAL_BANGS, val[1:]):
             val = f"'{val}'"
         query_parts.append(val)
-    query = ' '.join(query_parts)
+    return ' '.join(query_parts)
+
+
+def request(query, params):
+
+    query = quote_ddg_bangs(query)
+
+    # request needs a vqd argument
+    vqd = get_vqd(query)
 
     eng_region = traits.get_region(params['searxng_locale'], traits.all_locale)
     # eng_lang = get_ddg_lang(traits, params['searxng_locale'])
@@ -379,8 +384,8 @@ def fetch_traits(engine_traits: EngineTraits):
 
     engine_traits.all_locale = 'wt-wt'
 
-    # updated from u588 to u661 / should be updated automatically?
-    resp = get('https://duckduckgo.com/util/u661.js')
+    # updated from u661.js to u.7669f071a13a7daa57cb / should be updated automatically?
+    resp = get('https://duckduckgo.com/dist/util/u.7669f071a13a7daa57cb.js')
 
     if not resp.ok:  # type: ignore
         print("ERROR: response from DuckDuckGo is not OK.")

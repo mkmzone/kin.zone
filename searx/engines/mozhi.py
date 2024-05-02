@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Mozhi (alternative frontend for popular translation engines)"""
 
 import random
@@ -16,7 +15,7 @@ about = {
 }
 
 engine_type = 'online_dictionary'
-categories = ['general']
+categories = ['general', 'translate']
 
 base_url = "https://mozhi.aryak.me"
 mozhi_engine = "google"
